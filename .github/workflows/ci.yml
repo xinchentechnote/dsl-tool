@@ -26,14 +26,17 @@ jobs:
       - name: esbuild
         run: yarn compile
 
-      - name: Install GTK dependencies (for vscode test)
+      - name: Install GUI dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-0 libxss1 libasound2t64 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxshmfence1 libxrender1 libxtst6
+            sudo apt-get update
+            sudo apt-get install -y \
+            libgtk-3-0 libxss1 libasound2t64 libnss3 \
+            libx11-xcb1 libxcomposite1 libxdamage1 \
+            libxrandr2 libgbm1 libxshmfence1 libxrender1 libxtst6 \
+            xvfb
 
-
-      - name: Run tests
-        run: yarn test
+      - name: Run VSCode extension tests in headless mode
+        run: xvfb-run -a yarn test
 
       - name: Package extension
         run: yarn vsce package
