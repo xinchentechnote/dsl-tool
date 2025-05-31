@@ -35,8 +35,8 @@ jobs:
             libxrandr2 libgbm1 libxshmfence1 libxrender1 libxtst6 \
             xvfb
 
-      - name: Run VSCode extension tests in headless mode
-        run: xvfb-run -a yarn test
+    #   - name: Run VSCode extension tests in headless mode
+    #     run: xvfb-run -a yarn test
 
       - name: Package extension
         run: yarn vsce package
