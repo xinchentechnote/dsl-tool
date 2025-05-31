@@ -23,14 +23,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: TypeScript build
-        run: yarn watch:tsc --noEmit false
-
       - name: esbuild
-        run: yarn build || yarn watch:esbuild
+        run: yarn compile
 
       - name: Run tests
         run: yarn test
-        
+
       - name: Package extension
         run: yarn vsce package
