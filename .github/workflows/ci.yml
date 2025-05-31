@@ -37,6 +37,8 @@ jobs:
 
     #   - name: Run VSCode extension tests in headless mode
     #     run: xvfb-run -a yarn test
-
+      
+      - name: Install vsce
+        run: yarn global add vsce
       - name: Package extension
         run: yarn vsce package
